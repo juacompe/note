@@ -56,4 +56,4 @@ sudo bash /usr/share/doc/wordpress/examples/setup-mysql -n myscrum_com myscrum.c
 
 Now we should be able to acess http://myscrum.com/wordpress/ to finish the setup.
 
-
+ref: <https://help.ubuntu.com/community/WordPress>
