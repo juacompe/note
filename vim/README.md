@@ -1,8 +1,9 @@
 Vim default
 ----
 
-```
 edit $HOME/.vimrc
+
+```
 set expandtab
 set shiftwidth=4
 set softtabstop=4
