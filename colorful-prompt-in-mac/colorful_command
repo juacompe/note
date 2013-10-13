@@ -1,5 +1,21 @@
 #!/bin/bash
+
 cd `dirname $0`
-cat colorful_command.config > $HOME/.profile
-source $HOME/.profile
+
+PROFILE=$HOME/.profile
+
+if [ ! -f $PROFILE ]; then
+    MESSAGE="Creating $PROFILE with colorful config."
+    COMMAND=`cat colorful_command.config > $PROFILE`
+else
+    if grep -q "# Colorful command" $PROFILE; then
+        MESSAGE="The command is already colorful"
+    else
+        MESSAGE="Appending coloful config in $PROFILE"
+        COMMAND=`cat colorful_command.config >> $PROFILE`
+    fi
+fi
+
+echo $MESSAGE
+COMMAND
 
