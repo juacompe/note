@@ -1,0 +1,4 @@
+#!/bin/bash
+cat colorful_command.config > $HOME/.profile
+source $HOME/.profile
+
