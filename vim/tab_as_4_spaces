@@ -1,0 +1,21 @@
+#!/bin/bash
+
+cd `dirname $0`
+
+FILE=$HOME/.vimrc
+
+if [ ! -f $FILE ]; then
+    MESSAGE="Creating $FILE with tab as 4 spaces config."
+    COMMAND=`cat tab_as_4_spaces.config > $FILE`
+else
+    if grep -q "\" Tab as 4 spaces" $FILE; then
+        MESSAGE="The config is already exist in $FILE"
+    else
+        MESSAGE="Appending tab as 4 spaces in $FILE"
+        COMMAND=`cat tab_as_4_spaces.config >> $FILE`
+    fi
+fi
+
+echo $MESSAGE
+COMMAND
+
