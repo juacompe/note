@@ -1,7 +1,7 @@
 Vim default
 ----
 
-edit $HOME/.vimrc
+edit `$HOME/.vimrc`
 
 ```
 set expandtab
@@ -13,8 +13,9 @@ set autoindent
 ```
 
 Description
-the first 4 lines would insert 4 spaces instead of \t when you press tab in insert mode
-set nu shows number
+
+- the first 4 lines would insert 4 spaces instead of \t when you press tab in insert mode
+- set nu shows number
 
 Concatenate string lines
 ----
