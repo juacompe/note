@@ -1,4 +1,5 @@
 #!/bin/bash
+cd `dirname $0`
 cat colorful_command.config > $HOME/.profile
 source $HOME/.profile
 
