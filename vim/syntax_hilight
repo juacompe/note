@@ -1,0 +1,20 @@
+#!/bin/bash
+
+cd `dirname $0`
+
+FILE=$HOME/.vimrc
+
+if [ ! -f $FILE ]; then
+    MESSAGE="Creating $FILE with Syntax hilighting config."
+    COMMAND=`cat syntax_hilight.config > $FILE`
+else
+    if grep -q "\" Syntax hilighting" $FILE; then
+        MESSAGE="The config is already exist in $FILE"
+    else
+        MESSAGE="Appending Syntax hilighting in $FILE"
+        COMMAND=`cat syntax_hilight.config >> $FILE`
+    fi
+fi
+
+echo $MESSAGE
+COMMAND
