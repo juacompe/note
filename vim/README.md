@@ -49,3 +49,16 @@ Tada! This is the result
 iVBORw0KGgoAAAANSUhEUgAAAf8AAAE7CAYAAADTiIgcAAAgAElEQVR4Xu2dCZQVxfWHr+PCDiIqRIeocYNzNOICRFEHwS3ighKXKOoBDi4Q1CDK5vo3shjARAMuKASdmKgZ3EA9ERWMqCyumAweXGLEKArKIoiI+M/tpCbNMMzr7tevu6r7q3PmMPBqufXd4v2qq6tubbPffvt9LyQIQAACEIAABHJDYJvp06d/v9tuu0nnzp1z02k6CgEIQAACEMgLgY8//liWLl0q8+fPl1mzZsnixYtlm+//nfICgH5CAAIQgAAE8k5AJwOIf95HAf2HAAQgAIHcEUD8c+dyOgwBCEAAAnkngPjnfQTQfwhAAAIQyB0BxD93LqfDEIAABCCQdwKIf95HAP2HAAQgAIHcEUD8c+dyOgwBCEAAAnkngPjnfQTQfwhAAAIQyB0BxD93LqfDEIAABCCQdwKIf95HAP2HAAQgAIHcEUD8c+dyOgwBCEAAAnkngPjnfQTQfwhAAAIQyB0BxD93LqfD
 ```
 
+Trailing white space
+----
+
+Add below lines into `.vimrc`
+
+```
+" delete trailing white space on save, useful for Python and CoffeeScript ;)
+autocmd BufWritePre * :%s/\s\+$//e
+
+" show tabs and trail white space
+set list lcs=tab:\|\ ,trail:·
+```
+
