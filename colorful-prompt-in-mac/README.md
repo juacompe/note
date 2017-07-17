@@ -1,4 +1,3 @@
-#!/bin/bash
 # Colorful prompt in Mac
 
 ## Enter current directory
