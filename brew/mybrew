@@ -1,0 +1,7 @@
+brew install zsh
+brew install nvm
+brew install glide
+brew install yarn --without-node
+brew install direnv
+brew install ag
+brew install chromedriver
