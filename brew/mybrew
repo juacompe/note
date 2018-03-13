@@ -5,3 +5,5 @@ brew install yarn --without-node
 brew install direnv
 brew install ag
 brew install chromedriver
+brew install htop
+brew install rbenv
