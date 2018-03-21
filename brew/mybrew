@@ -8,3 +8,4 @@ brew install chromedriver
 brew install htop
 brew install rbenv
 brew install htop
+brew install telnet
