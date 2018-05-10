@@ -5,6 +5,5 @@
 
     [[ "$0" == "${HOME}/.profile.d/README.md" ]] && return 0
     ln -s `pwd` ~/.profile.d
-    [[ ! `grep '. ~/.profile.d/\*' ~/.zshrc` ]] && echo '. ~/.profile.d/*' >> ~/.zshrc
-    [[ ! `grep '. ~/.profile.d/alias' ~/.zshrc` ]] && echo '. ~/.profile.d/alias*' >> ~/.zshrc
+    [[ ! `grep 'for f in ~/.profile.d/\*; do source $f; done' ~/.zshrc` ]] && echo 'for f in ~/.profile.d/*; do source $f; done' >> ~/.zshrc
 
