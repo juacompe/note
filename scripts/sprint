@@ -1,0 +1,23 @@
+#!/bin/bash
+
+fivepercent=$1
+daily=$2
+work=$3
+tenpercent=$4
+
+fivepercent=${fivepercent:-3m}
+daily=${daily:-1m}
+work=${work:-13m}
+tenpercent=${tenpercent:-6m}
+
+say "sprint planning 1" && termdown "${fivepercent}" && 
+say "sprint planning 2" && termdown "${fivepercent}" && 
+say "daily scrum" && termdown "${daily}" && 
+say "day 1" && termdown "${work}" && 
+say "daily scrum" && termdown "${daily}" && 
+say "day2" && termdown "${work}" && 
+say "Product backlog refinement" && termdown "${tenpercent}" && 
+say "daily scrum" && termdown "${daily}" && 
+say "day 3" && termdown "${work}" && 
+say "sprint review"
+

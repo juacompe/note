@@ -1,0 +1,11 @@
+#!/bin/bash
+
+odde_home="${HOME}/Dropbox/ออด-อี (ประเทศไทย)"
+
+function count_files() {
+    ls -l "${odde_home}/qt_inv_receipt/$(date +'%Y')/$(date +'%m')"*"/quotations"|wc -l
+}
+
+quotation_count=$(count_files)
+echo "$(printf "%03d\\n" "$quotation_count")-$(date +'%m%Y')"
+

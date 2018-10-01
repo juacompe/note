@@ -1,0 +1,3 @@
+#!/bin/bash
+
+parallel 'figlet -f poison -w 132 {1} | {2}' ::: Dev Ops :::+ cat tac | sed "s,^,$(printf '%50s')," | lolcat
