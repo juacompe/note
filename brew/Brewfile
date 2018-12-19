@@ -31,6 +31,7 @@ brew "shellcheck"
 brew "telnet"
 brew "the_silver_searcher"
 brew "yarn", args: ["without-node"]
+brew "zsh"
 cask "android-studio"
 cask "bartender"
 cask "clipy"
