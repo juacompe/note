@@ -1,5 +1,5 @@
 #!/bin/bash
 
 fullname=$1
-name=$(echo ${fullname} | awk -F "." '{print $1}')
+name=$(echo "${fullname}" | awk -F "." '{print $1}')
 sips -s format JPEG "${fullname}" --out "${name}.jpg"
