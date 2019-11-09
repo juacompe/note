@@ -1,0 +1,4 @@
+#!/bin/bash
+
+name=$1
+sips -s format JPEG ${name}.heic --out ${name}.jpg
