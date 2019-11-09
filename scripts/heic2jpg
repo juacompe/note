@@ -1,4 +1,5 @@
 #!/bin/bash
 
-name=$1
-sips -s format JPEG ${name}.heic --out ${name}.jpg
+fullname=$1
+name=$(echo ${fullname} | awk -F "." '{print $1}')
+sips -s format JPEG "${fullname}" --out "${name}.jpg"
