@@ -1,5 +1,5 @@
 #!/bin/bash
 
 rm -rf ~/Library/Caches/Cypress/*
-rm ~/Library/Caches/Homebrew/*
+rm -rf ~/Library/Caches/Homebrew/*
 echo "y" | docker system prune -a
