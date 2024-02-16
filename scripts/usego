@@ -1,5 +1,5 @@
 #!/bin/bash
 version=$1
-version=${version:-1.5.1}
-export GOROOT=~/bin/go${version}
+version=${version:-1.21.3}
+export GOROOT=~/sdk/go${version}
 export PATH="${GOROOT}/bin:${PATH}"
