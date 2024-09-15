@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# source: https://github.com/nerds-odd-e/doughnut/blob/main/who.sh
 # npm install -g github_action_sound
 
 github_action_sound $1 2>&1 |
