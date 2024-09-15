@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# npm install -g github_action_sound
+
+github_action_sound $1 2>&1 |
+tee /dev/tty |
+while IFS= read -r line; do
+  if [[ "$line" == *"failed"* ]]; then
+    afplay ~/Downloads/who.mp3 &
+  fi
+done
