@@ -2,3 +2,13 @@ export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
+# Automatically switch Node versions based on .nvmrc
+autoload -U add-zsh-hook
+load-nvmrc() {
+  if [[ -f .nvmrc ]]; then
+    nvm use || nvm install
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+
