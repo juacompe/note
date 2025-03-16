@@ -7,8 +7,8 @@ def process_excel_to_word(input_file, output_file):
     # Load the Excel file
     sheet_data = pd.read_excel(input_file, sheet_name='Sheet1')
 
-    # Process the data: group by "Header" and combine text for each chapter
-    processed_data = sheet_data.groupby('Header')['Body'].apply(lambda x: ' '.join(x.dropna())).reset_index()
+    # Process the data: group by "Header" but keep individual rows as separate paragraphs
+    processed_data = sheet_data.groupby('Header')['Body'].apply(list).reset_index()
 
     # Sort chapters by the header text for logical order
     processed_data = processed_data.sort_values(by='Header')
@@ -23,10 +23,12 @@ def process_excel_to_word(input_file, output_file):
         header.style.font.name = 'Arial'
         header.style.font.size = Pt(20)
 
-        # Add the body content with specified styling
-        body = doc.add_paragraph(row['Body'])
-        body.style.font.name = 'Arial'
-        body.style.font.size = Pt(11)
+        # Add each row as a new paragraph
+        for paragraph in row['Body']:
+            if isinstance(paragraph, str) and paragraph.strip():  # Ensure it's a valid string
+                body = doc.add_paragraph(paragraph.strip())
+                body.style.font.name = 'Arial'
+                body.style.font.size = Pt(11)
 
         # Add a page break after each chapter
         doc.add_page_break()
