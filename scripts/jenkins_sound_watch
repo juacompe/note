@@ -4,6 +4,7 @@ view_url="$1"
 jenkins_username="$2"
 jenkins_api_token="$3"
 sound_path="$4"
+interval=${5:-60}
 
 function get_jenkins_url() {
   view_url="$1"
@@ -42,11 +43,33 @@ function play_sound_if_a_job_is_failing() {
   fi
 }
 
+function check_jenkins() {
+  view_url="$1"
+  jenkins_username="$2"
+  jenkins_api_token="$3"
+  sound_path="$4"
+
+  jenkins_url=$(get_jenkins_url "${view_url}")
+  auth=$(get_auth "${jenkins_username}" "${jenkins_api_token}")
+  crumb=$(get_crumb "${auth}" "${jenkins_url}")
+  jobs=$(get_jobs "${auth}" "${crumb}" "${view_url}")
+
+  play_sound_if_a_job_is_failing "${jobs}" "${sound_path}"
+}
+
+function watch_jenkins() {
+  view_url="$1"
+  jenkins_username="$2"
+  jenkins_api_token="$3"
+  sound_path="$4"
+  interval="$5"
+
+  while true; do
+    check_jenkins "${view_url}" "${jenkins_username}" "${jenkins_api_token}" "${sound_path}"
+    sleep "${interval}"
+  done
+}
+
 echo 'usage: ./jenkins_sound_watch https://${jenkins_host}/view/all/job/[...full_view_path...] $user $token $sound_path.mp3'
-jenkins_url=$(get_jenkins_url "${view_url}")
-auth=$(get_auth "${jenkins_username}" "${jenkins_api_token}")
-crumb=$(get_crumb "${auth}" "${jenkins_url}")
-jobs=$(get_jobs "${auth}" "${crumb}" "${view_url}")
 
-play_sound_if_a_job_is_failing "${jobs}" "${sound_path}"
-
+watch_jenkins "${view_url}" "${jenkins_username}" "${jenkins_api_token}" "${sound_path}" "${interval}"
