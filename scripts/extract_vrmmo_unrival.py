@@ -3,6 +3,7 @@ from docx import Document
 from docx.shared import Pt
 import sys
 
+
 def process_excel_to_word(input_file, output_file):
     # Load the Excel file
     sheet_data = pd.read_excel(input_file, sheet_name='Sheet1')
@@ -36,6 +37,7 @@ def process_excel_to_word(input_file, output_file):
     # Save the document
     doc.save(output_file)
     print(f"Document saved at: {output_file}")
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
