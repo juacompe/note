@@ -1,0 +1,52 @@
+#!/bin/bash
+
+view_url="$1"
+jenkins_username="$2"
+jenkins_api_token="$3"
+sound_path="$4"
+
+function get_jenkins_url() {
+  view_url="$1"
+  echo "$view_url" | awk -F/ '{print $1 "//" $3}'
+}
+
+function get_auth() {
+  username="$1"
+  api_token="$2"
+  echo -n "${username}:${api_token}" | base64
+}
+
+function get_crumb() {
+  auth="$1"
+  jenkins_url="$2"
+  crumb_json=$(curl -s -H "Authorization: Basic ${auth}" "${jenkins_url}/crumbIssuer/api/json")
+  echo "${crumb_json}" | jq -r '.crumb'
+}
+
+function get_jobs() {
+  auth="$1"
+  crumb="$2"
+  view_url="$3"
+
+  curl -s -H "Authorization: Basic ${auth}" \
+     -H "Jenkins-Crumb: ${crumb}" \
+     "${view_url}/api/json?pretty=true"
+}
+
+function play_sound_if_a_job_is_failing() {
+  jobs="$1"
+  sound_path="$2"
+
+  if [[ "${jobs}" == *"red_anime"* ]]; then
+    afplay "${sound_path}" &
+  fi
+}
+
+echo 'usage: ./jenkins_sound_watch https://${jenkins_host}/view/all/job/[...full_view_path...] $user $token $sound_path.mp3'
+jenkins_url=$(get_jenkins_url "${view_url}")
+auth=$(get_auth "${jenkins_username}" "${jenkins_api_token}")
+crumb=$(get_crumb "${auth}" "${jenkins_url}")
+jobs=$(get_jobs "${auth}" "${crumb}" "${view_url}")
+
+play_sound_if_a_job_is_failing "${jobs}" "${sound_path}"
+
