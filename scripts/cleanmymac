@@ -3,3 +3,4 @@
 rm -rf ~/Library/Caches/Cypress/*
 rm -rf ~/Library/Caches/Homebrew/*
 echo "y" | docker system prune -a
+brew cleanup
