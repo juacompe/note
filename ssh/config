@@ -1,0 +1,37 @@
+Include /Users/juacompe/.colima/ssh_config
+
+# Added by OrbStack: 'orb' SSH host for Linux machines
+# This only works if it's at the top of ssh_config (before any Host blocks).
+# Comment this line if you don't want it to be added again.
+Include ~/.orbstack/ssh/config
+
+Host worklog-huawei-prod
+  HostName 110.238.117.64
+  User root
+  IdentityFile ~/.ssh/id_rsa
+
+Host worklog-oddscloud-dev
+  HostName 10.11.30.5
+  User ubuntu
+
+Host queue-dev
+  HostName 10.10.0.140
+  User ubuntu
+
+Host cfo-huawei
+  HostName 101.44.61.14
+  User root
+  IdentityFile ~/.ssh/id_rsa
+
+Host friendslog-huawei-prod
+  HostName 122.8.152.221
+  User root
+
+Host friendslog-oddscloud-dev
+  HostName 10.10.0.250
+  User ubuntu
+
+Host linode.www.odd-e.com
+  HostName 173.255.252.186
+  User juacompe
+
